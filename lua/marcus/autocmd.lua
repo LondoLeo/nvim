@@ -46,8 +46,8 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
 })
 
-vim.api.nvim_create_autocmd({"ColorScheme", 'BufEnter'}, {
-    callback = function () 
+vim.api.nvim_create_autocmd({ "ColorScheme", 'BufEnter' }, {
+    callback = function()
         local normal = vim.api.nvim_get_hl_by_name('Normal', true)
         local bg = string.format("#%06x", normal["background"])
         os.execute(string.format("tmux set-option -t \"$(tmux display-message -p '#S')\" window-style \"bg=%s\"", bg))

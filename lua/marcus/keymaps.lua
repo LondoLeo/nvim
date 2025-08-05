@@ -1,10 +1,12 @@
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set("n", "U", vim.cmd.redo)
 
-vim.keymap.set({ "n", "i" }, "<C-H>", function() vim.cmd.wincmd("h") end)
-vim.keymap.set({ "n", "i" }, "<C-L>", function() vim.cmd.wincmd("l") end)
-vim.keymap.set({ "n", "i" }, "<C-N>", function() vim.cmd.wincmd("j") end)
-vim.keymap.set({ "n", "i" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
+vim.keymap.set({ "n" }, "<C-M>", function() vim.cmd.wincmd("h") end)
+vim.keymap.set({ "n" }, "<C-I>", function() vim.cmd.wincmd("l") end)
+vim.keymap.set({ "n" }, "<C-N>", function() vim.cmd.wincmd("j") end)
+vim.keymap.set({ "n" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
+
+vim.keymap.set("n", "<C-L>", "<C-I>")
 
 vim.keymap.set("n", "<leader>wh", vim.cmd.vsplit, { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wl", function()
@@ -16,6 +18,7 @@ vim.keymap.set("n", "<leader>wj", function()
     vim.cmd.wincmd("j")
 end, { desc = "Split window downwards" })
 vim.keymap.set("n", "<leader>wk", vim.cmd.split, { desc = "Split window upwards" })
+
 vim.keymap.set("n", "<leader>wwh", function() vim.cmd.wincmd("H") end, { desc = "Move window left" })
 vim.keymap.set("n", "<leader>wwj", function() vim.cmd.wincmd("J") end, { desc = "Move window down" })
 vim.keymap.set("n", "<leader>wwk", function() vim.cmd.wincmd("K") end, { desc = "Move window up" })
@@ -27,7 +30,7 @@ vim.keymap.set("n", "<C-,>", "5<C-W><")
 vim.keymap.set("n", "<C-.>", "5<C-W>>")
 vim.keymap.set("n", "<C-0>", "<C-W>=")
 
-vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE"
+vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
 vim.opt.langremap = false
 
 vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to start of line" })

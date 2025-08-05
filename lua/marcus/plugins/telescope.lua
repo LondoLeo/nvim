@@ -60,7 +60,7 @@ return {
                 },
             }
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>t', builtin.find_files, { desc = "Find Files" })
+            vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = "Find Files" })
             vim.keymap.set('n', 'gs', function() builtin.lsp_document_symbols({ initial_mode = "insert" }) end,
                 { desc = "List Symbols" })
             vim.keymap.set('n', 'gr', function() builtin.lsp_references({ initial_mode = "normal" }) end,

@@ -8,6 +8,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>v", vim.lsp.buf.code_action)
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("pyright")
