@@ -59,7 +59,13 @@ return {
                     },
                 },
             }
-            local builtin = require('telescope.builtin')
+            local builtin = require("telescope.builtin")
+            local actions = require("telescope.actions")
+            local action_state = require "telescope.actions.state"
+            local finders = require "telescope.finders"
+            local pickers = require "telescope.pickers"
+            local config = require "telescope.config".values
+            local previewers = require "telescope.previewers"
             vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = "Find Files" })
             vim.keymap.set('n', 'gs', function() builtin.lsp_document_symbols({ initial_mode = "insert" }) end,
                 { desc = "List Symbols" })
@@ -75,6 +81,48 @@ return {
                 function() builtin.diagnostics({ initial_mode = "normal", severity = vim.diagnostic.severity.ERROR }) end,
                 { desc = "Show Diagnostics" })
             vim.keymap.set('n', '<leader>g', builtin.git_status, { desc = "Git Status" })
+            -- vim.keymap.set({ "n", "i" }, "<C-s>", function()
+            --     local ft = vim.bo.filetype
+            --     local snippets = require "luasnip".get_snippets(ft)
+            --     if not snippets or vim.tbl_isempty(snippets) then
+            --         vim.notify("No snippets available for " .. ft, vim.log.levels.WARN)
+            --         return
+            --     end
+            --     pickers.new({}, {
+            --         prompt_title = "Snippets (" .. ft .. ")",
+            --         finder = finders.new_table {
+            --             results = snippets,
+            --             entry_maker = function(snippet)
+            --                 return {
+            --                     value = snippet,
+            --                     display = snippet.trigger or "[no trigger]",
+            --                     ordinal = snippet.trigger or "",
+            --                 }
+            --             end,
+            --         },
+            --         previewer = previewers.new_buffer_previewer {
+            --             define_preview = function(self, entry, _)
+            --                 local snippet = entry.value
+            --                 local body = snippet._snippet_string
+            --
+            --                 vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, vim.split(body, "\n"))
+            --             end,
+            --         },
+            --         sorter = config.generic_sorter({}),
+            --         attach_mappings = function(prompt_bufnr, _)
+            --             actions.select_default:replace(function()
+            --                 actions.close(prompt_bufnr)
+            --                 local selection = action_state.get_selected_entry()
+            --                 if selection and selection.value then
+            --                     require "luasnip".snip_expand(selection.value)
+            --                 else
+            --                     vim.notify("No snippet selected", vim.log.levels.WARN)
+            --                 end
+            --             end)
+            --             return true
+            --         end,
+            --     }):find()
+            -- end, { desc = "Available Snippets" })
         end
     },
 }

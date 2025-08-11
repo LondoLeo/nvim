@@ -10,14 +10,13 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>v", vim.lsp.buf.code_action)
 
-vim.lsp.enable("gopls")
-vim.lsp.enable("pyright")
-vim.lsp.enable("intelephense")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("tinymist")
-vim.lsp.enable("arduino-language-server")
-vim.lsp.enable("clangd")
-vim.lsp.enable("bash-language-server")
+-- Autocomplete
+
+-- Open Menu even when there's only one option, no menu item is preselected, show extra information in a popup
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
+
+-- LSP Servers
+vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server", "html-lsp" })
 
 vim.lsp.config("gopls", {
     settings = {
