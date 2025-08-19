@@ -1,10 +1,10 @@
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set("n", "U", vim.cmd.redo)
 
-vim.keymap.set({ "n" }, "<C-M>", function() vim.cmd.wincmd("h") end)
-vim.keymap.set({ "n" }, "<C-I>", function() vim.cmd.wincmd("l") end)
-vim.keymap.set({ "n" }, "<C-N>", function() vim.cmd.wincmd("j") end)
-vim.keymap.set({ "n" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
+-- vim.keymap.set({ "n" }, "<C-M>", function() vim.cmd.wincmd("h") end)
+-- vim.keymap.set({ "n" }, "<C-I>", function() vim.cmd.wincmd("l") end)
+-- vim.keymap.set({ "n" }, "<C-N>", function() vim.cmd.wincmd("j") end)
+-- vim.keymap.set({ "n" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
 
 vim.keymap.set("n", "<C-L>", "<C-I>")
 
