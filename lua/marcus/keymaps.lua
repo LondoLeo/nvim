@@ -39,4 +39,18 @@ vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "Go to end of line" })
 vim.keymap.set({ "n", "v" }, "gj", "G", { desc = "Go to end of file" })
 vim.keymap.set({ "n", "v" }, "gk", "gg", { desc = "Go to start of file" })
 
-vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true })
+
+vim.keymap.set("n", "<C-y>",
+    function()
+        local path = vim.fn.expand("%")
+        local f = io.open(path, "r")
+        if f == nil or f == false then
+            print("Cannot copy path: not a valid file")
+            return
+        end
+        io.close(f)
+        vim.fn.setreg("+", path)
+        print("Copied Path to Clipboard")
+    end,
+    { desc = "Yank current file path" })

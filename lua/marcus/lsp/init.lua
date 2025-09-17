@@ -2,6 +2,7 @@ vim.keymap.del("n", "grn")
 vim.keymap.del("n", "gra")
 vim.keymap.del("n", "grr")
 vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grt")
 
 local opts = { noremap = true, silent = true }
 
@@ -106,4 +107,15 @@ vim.lsp.config("clangd", {
             semanticHighlighting = true,
         },
     },
+})
+
+vim.lsp.config("bash-language-server", {
+    settings = {
+        bashls = {
+            enable = true,
+            cmd = { "bash-language-server", "start" },
+            filetypes = { "bash", "sh" },
+            root_markers = { ".git" },
+        }
+    }
 })

@@ -1,3 +1,8 @@
 return {
-    'folke/which-key.nvim',
+    -- 'folke/which-key.nvim',
+    -- opts = {
+    --     triggers = {
+    --         { "<auto>", mode = "nisotc" },
+    --     }
+    -- }
 }
