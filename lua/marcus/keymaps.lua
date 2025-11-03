@@ -6,7 +6,6 @@ vim.keymap.set("n", "U", vim.cmd.redo)
 -- vim.keymap.set({ "n" }, "<C-N>", function() vim.cmd.wincmd("j") end)
 -- vim.keymap.set({ "n" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
 
-vim.keymap.set("n", "<C-L>", "<C-I>")
 
 vim.keymap.set("n", "<leader>wh", vim.cmd.vsplit, { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wl", function()
@@ -24,12 +23,13 @@ vim.keymap.set("n", "<leader>wwj", function() vim.cmd.wincmd("J") end, { desc = 
 vim.keymap.set("n", "<leader>wwk", function() vim.cmd.wincmd("K") end, { desc = "Move window up" })
 vim.keymap.set("n", "<leader>wwl", function() vim.cmd.wincmd("L") end, { desc = "Move window right" })
 
-vim.keymap.set("n", "<C-->", "5<C-W>-")
-vim.keymap.set("n", "<C-=>", "5<C-W>+")
-vim.keymap.set("n", "<C-,>", "5<C-W><")
-vim.keymap.set("n", "<C-.>", "5<C-W>>")
+vim.keymap.set("n", "<C-Down>", "5<C-W>-")
+vim.keymap.set("n", "<C-Up>", "5<C-W>+")
+vim.keymap.set("n", "<C-Left>", "5<C-W><")
+vim.keymap.set("n", "<C-Right>", "5<C-W>>")
 vim.keymap.set("n", "<C-0>", "<C-W>=")
 
+vim.keymap.set("n", "<C-L>", "<C-I>")
 vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
 vim.opt.langremap = false
 

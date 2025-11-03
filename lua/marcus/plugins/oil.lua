@@ -23,7 +23,7 @@ return {
                 },
                 delete_to_trash = true,
             }
-            vim.keymap.set('n', '<leader>t', oil.open_float, { desc = "Open Oil" })
+            vim.keymap.set('n', '<leader>f', oil.open_float, { desc = "Open Oil" })
         end
     },
 }

@@ -66,7 +66,7 @@ return {
             local pickers = require "telescope.pickers"
             local config = require "telescope.config".values
             local previewers = require "telescope.previewers"
-            vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = "Find Files" })
+            vim.keymap.set('n', '<leader>t', builtin.find_files, { desc = "Find Files" })
             vim.keymap.set('n', 'gs', function() builtin.lsp_document_symbols({ initial_mode = "insert" }) end,
                 { desc = "List Symbols" })
             vim.keymap.set('n', 'gr', function() builtin.lsp_references({ initial_mode = "normal" }) end,

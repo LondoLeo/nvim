@@ -23,3 +23,8 @@ vim.opt.updatetime = 50
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.termguicolors = true
+
+vim.opt.swapfile = false
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
