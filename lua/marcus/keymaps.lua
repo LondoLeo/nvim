@@ -1,11 +1,6 @@
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set("n", "U", vim.cmd.redo)
 
--- vim.keymap.set({ "n" }, "<C-M>", function() vim.cmd.wincmd("h") end)
--- vim.keymap.set({ "n" }, "<C-I>", function() vim.cmd.wincmd("l") end)
--- vim.keymap.set({ "n" }, "<C-N>", function() vim.cmd.wincmd("j") end)
--- vim.keymap.set({ "n" }, "<C-E>", function() vim.cmd.wincmd("k") end, { remap = true })
-
 
 vim.keymap.set("n", "<leader>wh", vim.cmd.vsplit, { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wl", function()
@@ -29,17 +24,22 @@ vim.keymap.set("n", "<C-Left>", "5<C-W><")
 vim.keymap.set("n", "<C-Right>", "5<C-W>>")
 vim.keymap.set("n", "<C-0>", "<C-W>=")
 
+vim.keymap.set("n", "<C-F>", "<C-U>")
+vim.keymap.set("n", "<C-P>", "<C-D>")
+
 vim.keymap.set("n", "<C-L>", "<C-I>")
 vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
 vim.opt.langremap = false
 
 vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to start of line" })
 vim.keymap.set({ "n", "v" }, "ge", "0", { desc = "Go to first character of line" })
-vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "Go to end of line" })
+vim.keymap.set({ "n" }, "gl", "$", { desc = "Go to end of line" })
+vim.keymap.set({ "v" }, "gl", "$h", { desc = "Go to end of line" })
 vim.keymap.set({ "n", "v" }, "gj", "G", { desc = "Go to end of file" })
-vim.keymap.set({ "n", "v" }, "gk", "gg", { desc = "Go to start of file" })
+vim.keymap.set({ "n", "v" }, "gk", "go", { desc = "Go to start of file" })
 
 vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true })
+
 
 vim.keymap.set("n", "<C-y>",
     function()
@@ -50,7 +50,8 @@ vim.keymap.set("n", "<C-y>",
             return
         end
         io.close(f)
-        vim.fn.setreg("+", path)
+        local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+        vim.fn.setreg("+", string.format("%s:%d", path, line))
         print("Copied Path to Clipboard")
     end,
     { desc = "Yank current file path" })

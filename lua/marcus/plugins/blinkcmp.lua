@@ -34,7 +34,7 @@ return {
                     auto_show = true,
                 },
             },
-            signature = { enabled = true },
+            -- signature = { enabled = true },
         },
         opts_extend = { "sources.default" },
     }

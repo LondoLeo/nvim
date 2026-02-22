@@ -9,7 +9,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>k", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "<leader>v", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action)
 
 -- Autocomplete
 
@@ -17,7 +17,8 @@ vim.keymap.set("n", "<leader>v", vim.lsp.buf.code_action)
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- LSP Servers
-vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server", "html-lsp" })
+vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server", "html-lsp",
+    "ltex_plus" })
 
 vim.lsp.config("gopls", {
     settings = {
@@ -78,6 +79,8 @@ vim.lsp.config("tinymist", {
         tinymist = {
             enable = true,
             log_level = "debug",
+            exportPdf = 'onType',
+            outputPath = '$root/target/$dir/name'
         },
     },
 })
@@ -118,4 +121,34 @@ vim.lsp.config("bash-language-server", {
             root_markers = { ".git" },
         }
     }
+})
+
+vim.lsp.config("dts-lsp", {
+    settings = {
+        dtslsp = {
+            enable = true,
+            cmd = { "dts-lsp" },
+            filetypes = { "keymap" },
+            root_markers = { ".git" }
+        }
+    }
+})
+
+vim.lsp.config("ltex_plus", {
+    on_attach = function()
+        -- setup ltex_extra during on_attach
+        require("ltex_extra").setup({
+            load_langs = { "en-US", "de-DE" },
+            -- save to .ltex dir
+            path = ".ltex",
+        })
+    end,
+
+    settings = {
+        ltex = {
+            checkFrequency = 'edit',
+            enabled = { 'markdown', 'plaintex', 'rst', 'tex', 'latex', 'typst' },
+            language = 'de-DE',
+        },
+    },
 })

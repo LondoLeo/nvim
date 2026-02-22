@@ -12,8 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    checker = {
-        enabled = true,
+    change_detection = {
+        enabled = false,
+        notify = false,
     },
     spec = "marcus.plugins"
 })
