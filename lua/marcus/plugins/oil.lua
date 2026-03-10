@@ -12,6 +12,7 @@ return {
                     ["<C-n>"] = false,
                     ["<C-e>"] = false,
                     ["<C-i>"] = false,
+                    ["<C-l>"] = false,
                     ["<C-t>"] = false,
                     ["<C-s>"] = function() oil.select({ vertical = true, split = "belowright" }) end,
                     ["<Esc>"] = "actions.close"

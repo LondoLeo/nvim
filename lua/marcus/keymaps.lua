@@ -1,7 +1,23 @@
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+-- General Rebinds
+vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
+vim.opt.langremap = false
 vim.keymap.set("n", "U", vim.cmd.redo)
+vim.keymap.set("n", "<C-F>", "<C-U>")
+vim.keymap.set("n", "<C-P>", "<C-D>")
+vim.keymap.set("n", "<C-L>", "<C-I>")
+vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to start of line" })
+vim.keymap.set({ "n", "v" }, "ge", "0", { desc = "Go to first character of line" })
+vim.keymap.set({ "n" }, "gl", "$", { desc = "Go to end of line" })
+vim.keymap.set({ "v" }, "gl", "$h", { desc = "Go to end of line" })
+vim.keymap.set({ "n", "v" }, "gj", "G", { desc = "Go to end of file" })
+vim.keymap.set({ "n", "v" }, "gk", "go", { desc = "Go to start of file" })
+vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true })
+
+-- Terminal
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 
+-- Pane Navigation & Manipulation
 vim.keymap.set("n", "<leader>wh", vim.cmd.vsplit, { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wl", function()
     vim.cmd.vsplit()
@@ -22,25 +38,15 @@ vim.keymap.set("n", "<C-Down>", "5<C-W>-")
 vim.keymap.set("n", "<C-Up>", "5<C-W>+")
 vim.keymap.set("n", "<C-Left>", "5<C-W><")
 vim.keymap.set("n", "<C-Right>", "5<C-W>>")
-vim.keymap.set("n", "<C-0>", "<C-W>=")
 
-vim.keymap.set("n", "<C-F>", "<C-U>")
-vim.keymap.set("n", "<C-P>", "<C-D>")
-
-vim.keymap.set("n", "<C-L>", "<C-I>")
-vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
-vim.opt.langremap = false
-
-vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to start of line" })
-vim.keymap.set({ "n", "v" }, "ge", "0", { desc = "Go to first character of line" })
-vim.keymap.set({ "n" }, "gl", "$", { desc = "Go to end of line" })
-vim.keymap.set({ "v" }, "gl", "$h", { desc = "Go to end of line" })
-vim.keymap.set({ "n", "v" }, "gj", "G", { desc = "Go to end of file" })
-vim.keymap.set({ "n", "v" }, "gk", "go", { desc = "Go to start of file" })
-
-vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true })
+-- Tabs
+vim.keymap.set("n", "<C-J>", ":tabnew<cr>")
+vim.keymap.set("n", "H", ":tabprev<cr>")
+vim.keymap.set("n", "L", ":tabnext<cr>")
 
 
+
+-- Util
 vim.keymap.set("n", "<C-y>",
     function()
         local path = vim.fn.expand("%")

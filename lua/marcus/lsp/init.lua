@@ -17,8 +17,9 @@ vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action)
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- LSP Servers
-vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server", "html-lsp",
-    "ltex_plus" })
+vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server",
+    "html-lsp",
+    "ltex_plus", "sourcekit-lsp" })
 
 vim.lsp.config("gopls", {
     settings = {
@@ -151,4 +152,32 @@ vim.lsp.config("ltex_plus", {
             language = 'de-DE',
         },
     },
+})
+
+vim.lsp.config("laravel-ls", {
+    settings = {
+        laravel_ls = {
+            filetypes = { "php", "blade" },
+            root_markers = { "artisan" },
+            cmd = { "laravel-ls" }
+        }
+    }
+})
+
+vim.lsp.config("sourcekit-lsp", {
+    cmd = { "sourcekit-lsp" },
+
+    filetypes = { "swift" },
+
+    root_dir = function(bufnr, on_dir)
+        local root = vim.fs.root(bufnr, {
+            "Package.swift",
+            ".git",
+            "*.xcodeproj",
+            "*.xcworkspace",
+        })
+        if root then
+            on_dir(root)
+        end
+    end,
 })
