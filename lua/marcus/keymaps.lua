@@ -3,12 +3,6 @@ vim.opt.langmap = "nj,jn,NJ,JN,ek,ke,EK,KE,mh,hm,MH,HM,il,li,IL,LI"
 vim.opt.langremap = false
 vim.keymap.set("n", "<C-L>", "<C-I>")
 vim.keymap.set("n", "U", vim.cmd.redo)
-vim.keymap.set({ "n", "v" }, "ge", "0", { desc = "Go to first character of line" })
-vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to start of line" })
-vim.keymap.set({ "n" }, "gl", "$", { desc = "Go to end of line" })
-vim.keymap.set({ "v" }, "gl", "$h", { desc = "Go to end of line" })
-vim.keymap.set({ "n", "v" }, "gj", "G", { desc = "Go to end of file" })
-vim.keymap.set({ "n", "v" }, "gk", "go", { desc = "Go to start of file" })
 vim.keymap.set({ "n", "v" }, "s", ":s/", { noremap = true })
 
 -- Terminal

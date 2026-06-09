@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action)
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 -- LSP Servers
-vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bash-language-server",
+vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bashls",
     "html-lsp",
     "ltex_plus", "sourcekit-lsp" })
 
@@ -113,15 +113,10 @@ vim.lsp.config("clangd", {
     },
 })
 
-vim.lsp.config("bash-language-server", {
-    settings = {
-        bashls = {
-            enable = true,
-            cmd = { "bash-language-server", "start" },
-            filetypes = { "bash", "sh" },
-            root_markers = { ".git" },
-        }
-    }
+vim.lsp.config("bashls", {
+    cmd = { "bash-language-server", "start" },
+    filetypes = { "bash", "sh" },
+    root_markers = { ".git" },
 })
 
 vim.lsp.config("dts-lsp", {
