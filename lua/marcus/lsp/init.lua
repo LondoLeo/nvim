@@ -3,6 +3,8 @@ vim.keymap.del("n", "gra")
 vim.keymap.del("n", "grr")
 vim.keymap.del("n", "gri")
 vim.keymap.del("n", "grt")
+vim.keymap.del("x", "gra")
+vim.keymap.del("n", "grx")
 
 local opts = { noremap = true, silent = true }
 
@@ -19,7 +21,7 @@ vim.opt.completeopt = { "menuone", "noselect", "popup" }
 -- LSP Servers
 vim.lsp.enable({ "gopls", "pyright", "intelephense", "lua_ls", "tinymist", "clangd", "bashls",
     "html-lsp",
-    "ltex_plus", "sourcekit-lsp" })
+    --[[ "ltex_plus", ]] "sourcekit-lsp", "laravel-ls" })
 
 vim.lsp.config("gopls", {
     settings = {
@@ -43,25 +45,19 @@ vim.lsp.config("pyright", {
         },
     },
 })
+
 vim.lsp.config("intelephense", {
+    root_markers = { "composer.json" },
     settings = {
         intelephense = {
-            stubs = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date", "dom",
-                "enchant", "exif", "FFI", "fileinfo", "filter", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap",
-                "intl", "json", "ldap", "libxml", "mbstring", "mysqli", "mysqlnd", "odbc", "openssl", "pcntl", "pcre",
-                "PDO", "pdo_mysql", "pdo_pgsql", "pgsql", "Phar", "posix", "pspell", "readline", "redis", "Reflection",
-                "session", "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard",
-                "superglobals",
-                -- 'sybase_ct', 'sysvmsg', 'sysvsem', 'sysvshm',
-                -- 'tidy', 'tokenizer', 'xml', 'xmlreader', 'xmlrpc',
-                -- 'xmlwriter', 'xsl', 'Zend OPcache', 'zip', 'zlib'
-            },
+            phpVersion = "8.4",
             environment = {
                 includePaths = { "/usr/local/lib/php" },
             },
         },
     },
 })
+
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
