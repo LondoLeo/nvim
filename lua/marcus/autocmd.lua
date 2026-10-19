@@ -46,6 +46,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = "*.keymap",
+    callback = function()
+        vim.cmd.QMKFormat()
+    end
+})
+
 -- vim.api.nvim_create_autocmd({ "ColorScheme", 'BufEnter' }, {
 --     callback = function()
 --         local normal = vim.api.nvim_get_hl_by_name('Normal', true)
